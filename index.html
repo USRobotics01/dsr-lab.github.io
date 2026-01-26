@@ -6,160 +6,298 @@
   <title>DSR Labs</title>
 
   <style>
+    /* Variables globales */
     :root {
       --dsr-blue: #1f5fa9;
-      --text-dark: #222;
+      --dsr-blue-dark: #17427a;
+      --text-dark: #111;
       --text-gray: #555;
+      --bg-light: #f9f9f9;
+      --btn-radius: 6px;
+      --transition-fast: 0.3s ease;
+    }
+
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
       color: var(--text-dark);
-      background-color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      background: #fff;
     }
 
-    /* HEADER */
-    header {
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* NAVIGATION */
+    nav {
+      width: 100%;
+      padding: 20px 40px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: #fff;
+      border-bottom: 1px solid #eee;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      padding: 30px 40px;
-      border-bottom: 2px solid #eee;
+      z-index: 1000;
     }
 
-    header img {
-      height: 80px; /* LOGO MÁS GRANDE */
+    nav img {
+      height: 70px;
+    }
+
+    nav .menu {
+      display: flex;
+      gap: 25px;
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--text-gray);
+    }
+
+    nav .menu a:hover {
+      color: var(--text-dark);
     }
 
     /* HERO */
     .hero {
-      max-width: 1000px;
-      margin: 70px auto 40px auto;
-      padding: 0 40px;
+      height: 75vh;
+      background: url('hero-background.jpg') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+      margin-top: 90px;
     }
 
     .hero h1 {
-      font-size: 42px;
-      font-weight: 700;
+      font-size: 48px;
       color: var(--text-dark);
       margin-bottom: 15px;
+      font-weight: 700;
     }
 
     .hero p {
-      font-size: 20px;
-      line-height: 1.6;
+      font-size: 22px;
       color: var(--text-gray);
-      max-width: 800px;
-    }
-
-    /* CONTENIDO */
-    .main-content {
-      max-width: 1000px;
-      margin: 40px auto 80px auto;
-      padding: 0 40px;
-      flex: 1;
-    }
-
-    .section {
-      margin-bottom: 70px;
-    }
-
-    .section h2 {
-      font-size: 26px;
-      color: var(--dsr-blue);
-      margin-bottom: 18px;
-      border-left: 5px solid var(--dsr-blue);
-      padding-left: 12px;
-    }
-
-    .intro-text {
-      font-size: 18px;
-      line-height: 1.7;
-      color: var(--text-gray);
+      margin-bottom: 30px;
       max-width: 900px;
     }
 
-    ul.project-list {
-      margin-top: 20px;
-      padding-left: 20px;
+    .hero .btn-primary {
+      background: var(--dsr-blue);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: var(--btn-radius);
+      font-size: 18px;
+      font-weight: 600;
+      transition: var(--transition-fast);
     }
 
-    ul.project-list li {
+    .hero .btn-primary:hover {
+      background: var(--dsr-blue-dark);
+    }
+
+    /* SECCIONES */
+    .section {
+      padding: 80px 40px;
+    }
+
+    .section h2 {
+      font-size: 32px;
+      color: var(--dsr-blue);
+      text-align: center;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .section p {
       font-size: 18px;
-      line-height: 1.6;
       color: var(--text-gray);
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto 30px auto;
+      line-height: 1.6;
+    }
+
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      margin-top: 40px;
+    }
+
+    .project-card {
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: var(--transition-fast);
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    }
+
+    .project-card h3 {
+      font-size: 22px;
+      color: var(--dsr-blue-dark);
       margin-bottom: 12px;
     }
 
+    .project-card p {
+      font-size: 16px;
+      color: var(--text-gray);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      margin-top: 12px;
+      background: var(--dsr-blue-dark);
+      color: #fff;
+      padding: 10px 24px;
+      border-radius: var(--btn-radius);
+      font-size: 16px;
+      font-weight: 600;
+      transition: var(--transition-fast);
+    }
+
+    .btn-secondary:hover {
+      background: var(--dsr-blue);
+    }
+
     /* FOOTER */
-    .footer {
-      background-color: var(--dsr-blue);
-      color: #ffffff;
+    footer {
+      background: var(--dsr-blue);
+      color: #fff;
       text-align: center;
       padding: 30px 20px;
-      font-size: 14px;
+      font-size: 15px;
+      font-weight: 500;
     }
+
   </style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <img src="logo-dsr.png" alt="DSR Logo">
-  </header>
+  <!-- NAVIGATION -->
+  <nav>
+    <img src="logo-dsr.png" alt="DSR Labs Logo">
+    <div class="menu">
+      <a href="#about">Quiénes somos</a>
+      <a href="#projects">Proyectos</a>
+      <a href="#demo">Demo</a>
+      <a href="#contact">Contacto</a>
+    </div>
+  </nav>
 
   <!-- HERO -->
   <div class="hero">
-    <h1>Engineering the future of human-centered robotics</h1>
+    <h1>Engineering tomorrow’s robotics, today</h1>
     <p>
-      Advanced control, prosthetics and robotic systems built on rigorous
-      dynamical modeling and real-world experimentation.
+      Desde prótesis robóticas modulares hasta sistemas humanoides de próxima generación.
+      Construimos tecnología que une ingeniería de control, sistemas dinámicos e impacto real.
+    </p>
+    <a href="#about" class="btn-primary">Conoce más</a>
+  </div>
+
+  <!-- QUIÉNES SOMOS -->
+  <div id="about" class="section">
+    <h2>Quiénes somos</h2>
+    <p>
+      DSR Labs es un laboratorio de ingeniería avanzada enfocado en sistemas dinámicos,
+      robótica modular, prótesis inteligentes e instrumentación científica con impacto humano
+      e industrial.
+    </p>
+    <p>
+      Combinamos modelado físico, control, electrónica y diseño centrado en el usuario para
+      construir soluciones reales — desde dedos robóticos hasta sistemas humanoides completos.
     </p>
   </div>
 
-  <!-- CONTENIDO -->
-  <div class="main-content">
+  <!-- PROYECTOS -->
+  <div id="projects" class="section" style="background: var(--bg-light);">
+    <h2>Nuestros proyectos</h2>
+    <p>Proyectos actuales y áreas de desarrollo dentro de DSR Labs.</p>
 
-    <div class="section">
-      <h2>Quiénes somos</h2>
-      <p class="intro-text">
-        DSR Labs es un laboratorio de ingeniería avanzada enfocado en el diseño
-        de sistemas robóticos, prótesis modulares e instrumentación científica.
-        Nuestro trabajo combina sistemas dinámicos, control, electrónica y
-        modelado físico para resolver problemas reales con impacto humano e industrial.
-      </p>
+    <div class="projects-container">
+
+      <div class="project-card">
+        <h3>Prótesis robóticas modulares</h3>
+        <p>
+          Diseño y desarrollo de prótesis modulares: dedos, manos y extremidades completas
+          con control mioeléctrico y feedback de sensores.
+        </p>
+        <a href="#" class="btn-secondary">Ver detalles</a>
+      </div>
+
+      <div class="project-card">
+        <h3>Control y dinámica avanzada</h3>
+        <p>
+          Investigación en sistemas dinámicos, control predictivo y estabilidad para plataformas
+          robóticas de alto desempeño.
+        </p>
+        <a href="#" class="btn-secondary">Ver detalles</a>
+      </div>
+
+      <div class="project-card">
+        <h3>Robótica experimental</h3>
+        <p>
+          Proyectos de investigación en percepción, movimiento coordinado y navegación en
+          entornos reales y simulados.
+        </p>
+        <a href="#" class="btn-secondary">Ver detalles</a>
+      </div>
+
+      <div class="project-card">
+        <h3>Instrumentación científica</h3>
+        <p>
+          Sensores, telemetría en tiempo real y sistemas de adquisición para laboratorios y
+          plataformas robóticas.
+        </p>
+        <a href="#" class="btn-secondary">Ver detalles</a>
+      </div>
+
     </div>
+  </div>
 
-    <div class="section">
-      <h2>Nuestros proyectos</h2>
-      <ul class="project-list">
-        <li><strong>Prótesis robóticas modulares:</strong> sistemas mioeléctricos escalables desde dedos hasta extremidades completas.</li>
-        <li><strong>Sistemas de control y dinámica:</strong> modelado, simulación y control de sistemas no lineales.</li>
-        <li><strong>Robótica experimental:</strong> plataformas para investigación en percepción, movimiento y estabilidad.</li>
-        <li><strong>Instrumentación científica:</strong> sensores, adquisición de datos y telemetría en tiempo real.</li>
-      </ul>
-    </div>
+  <!-- DEMO EN DESARROLLO -->
+  <div id="demo" class="section">
+    <h2>Demo en desarrollo</h2>
+    <p>
+      Próximamente podrás explorar demostraciones interactivas de nuestros sistemas,
+      incluyendo visualización de estados dinámicos, control en tiempo real,
+      simuladores y dashboards inteligentes.
+    </p>
+    <a href="#contact" class="btn-primary">Contáctanos para acceso anticipado</a>
+  </div>
 
-    <div class="section">
-      <h2>Demo en desarrollo</h2>
-      <p class="intro-text">
-        Próximamente presentaremos demostraciones interactivas de nuestros sistemas,
-        incluyendo visualización de estados dinámicos, control en lazo cerrado,
-        telemetría de sensores e interfaces humano-máquina.
-      </p>
-    </div>
-
+  <!-- CONTACTO -->
+  <div id="contact" class="section" style="background: var(--bg-light);">
+    <h2>Contacto</h2>
+    <p>
+      Escríbenos para colaboraciones, proyectos o presentaciones.
+      <br>
+      <strong>contacto@dsrlabs.tech</strong>
+    </p>
   </div>
 
   <!-- FOOTER -->
-  <div class="footer">
-    © 2026 DSR Labs · Advanced Robotics · Control Systems · Human-Centered Engineering
-  </div>
+  <footer>
+    © 2026 DSR Labs · Advanced Robotics · Human-Centered Engineering · Todos los derechos reservados.
+  </footer>
 
 </body>
 </html>
