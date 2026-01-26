@@ -6,7 +6,6 @@
   <title>DSR Labs</title>
 
   <style>
-    /* Variables globales */
     :root {
       --dsr-blue: #1f5fa9;
       --dsr-blue-dark: #17427a;
@@ -17,7 +16,6 @@
       --transition-fast: 0.3s ease;
     }
 
-    /* Reset */
     * {
       margin: 0;
       padding: 0;
@@ -35,7 +33,7 @@
       color: inherit;
     }
 
-    /* NAVIGATION */
+    /* NAV */
     nav {
       width: 100%;
       padding: 20px 40px;
@@ -81,7 +79,6 @@
 
     .hero h1 {
       font-size: 48px;
-      color: var(--text-dark);
       margin-bottom: 15px;
       font-weight: 700;
     }
@@ -93,7 +90,7 @@
       max-width: 900px;
     }
 
-    .hero .btn-primary {
+    .btn-primary {
       background: var(--dsr-blue);
       color: #fff;
       padding: 14px 32px;
@@ -103,11 +100,11 @@
       transition: var(--transition-fast);
     }
 
-    .hero .btn-primary:hover {
+    .btn-primary:hover {
       background: var(--dsr-blue-dark);
     }
 
-    /* SECCIONES */
+    /* SECTIONS */
     .section {
       padding: 80px 40px;
     }
@@ -117,7 +114,6 @@
       color: var(--dsr-blue);
       text-align: center;
       margin-bottom: 18px;
-      font-weight: 700;
     }
 
     .section p {
@@ -129,6 +125,7 @@
       line-height: 1.6;
     }
 
+    /* PROJECTS */
     .projects-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -140,7 +137,7 @@
       background: #fff;
       border: 1px solid #eee;
       border-radius: 8px;
-      padding: 20px;
+      padding: 22px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       transition: var(--transition-fast);
     }
@@ -153,17 +150,18 @@
     .project-card h3 {
       font-size: 22px;
       color: var(--dsr-blue-dark);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .project-card p {
       font-size: 16px;
+      line-height: 1.5;
       color: var(--text-gray);
     }
 
     .btn-secondary {
       display: inline-block;
-      margin-top: 12px;
+      margin-top: 14px;
       background: var(--dsr-blue-dark);
       color: #fff;
       padding: 10px 24px;
@@ -184,15 +182,13 @@
       text-align: center;
       padding: 30px 20px;
       font-size: 15px;
-      font-weight: 500;
     }
-
   </style>
 </head>
 
 <body>
 
-  <!-- NAVIGATION -->
+  <!-- NAV -->
   <nav>
     <img src="logo-dsr.png" alt="DSR Labs Logo">
     <div class="menu">
@@ -208,37 +204,36 @@
     <h1>Engineering tomorrow’s robotics, today</h1>
     <p>
       Desde prótesis robóticas modulares hasta sistemas humanoides de próxima generación.
-      Construimos tecnología que une ingeniería de control, sistemas dinámicos e impacto real.
+      Ingeniería avanzada con impacto real.
     </p>
     <a href="#about" class="btn-primary">Conoce más</a>
   </div>
 
-  <!-- QUIÉNES SOMOS -->
+  <!-- ABOUT -->
   <div id="about" class="section">
     <h2>Quiénes somos</h2>
     <p>
-      DSR Labs es un laboratorio de ingeniería avanzada enfocado en sistemas dinámicos,
-      robótica modular, prótesis inteligentes e instrumentación científica con impacto humano
-      e industrial.
+      DSR Labs es un laboratorio de ingeniería avanzada enfocado en robótica,
+      sistemas dinámicos, prótesis inteligentes e instrumentación científica.
     </p>
     <p>
-      Combinamos modelado físico, control, electrónica y diseño centrado en el usuario para
-      construir soluciones reales — desde dedos robóticos hasta sistemas humanoides completos.
+      Combinamos modelado físico, control y electrónica para construir soluciones
+      reales, escalables y centradas en el ser humano.
     </p>
   </div>
 
-  <!-- PROYECTOS -->
+  <!-- PROJECTS -->
   <div id="projects" class="section" style="background: var(--bg-light);">
     <h2>Nuestros proyectos</h2>
-    <p>Proyectos actuales y áreas de desarrollo dentro de DSR Labs.</p>
+    <p>Áreas clave de desarrollo dentro de DSR Labs.</p>
 
     <div class="projects-container">
 
       <div class="project-card">
         <h3>Prótesis robóticas modulares</h3>
         <p>
-          Diseño y desarrollo de prótesis modulares: dedos, manos y extremidades completas
-          con control mioeléctrico y feedback de sensores.
+          Prótesis modulares desde dedos hasta extremidades completas,
+          con control mioeléctrico y sensorización avanzada.
         </p>
         <a href="#" class="btn-secondary">Ver detalles</a>
       </div>
@@ -246,8 +241,8 @@
       <div class="project-card">
         <h3>Control y dinámica avanzada</h3>
         <p>
-          Investigación en sistemas dinámicos, control predictivo y estabilidad para plataformas
-          robóticas de alto desempeño.
+          Sistemas dinámicos, control avanzado y estabilidad para
+          plataformas robóticas de alto desempeño.
         </p>
         <a href="#" class="btn-secondary">Ver detalles</a>
       </div>
@@ -255,9 +250,8 @@
       <div class="project-card">
         <h3>Plataformas robóticas educativas</h3>
         <p>
-         Plataformas robóticas modulares y escalables diseñadas para introducir a estudiantes en la robótica moderna.
-         Permiten desarrollar capacidades sólidas en programación, electrónica y control, a través de sistemas reales 
-         que crecen junto con el nivel del usuario, desde conceptos básicos hasta aplicaciones avanzadas.
+          Plataformas modulares y escalables para formación en robótica,
+          programación y electrónica.
         </p>
         <a href="#" class="btn-secondary">Ver detalles</a>
       </div>
@@ -265,8 +259,8 @@
       <div class="project-card">
         <h3>Instrumentación científica</h3>
         <p>
-          Sensores, telemetría en tiempo real y sistemas de adquisición para laboratorios y
-          plataformas robóticas.
+          Sensores, telemetría en tiempo real y sistemas de adquisición
+          para laboratorios y robótica.
         </p>
         <a href="#" class="btn-secondary">Ver detalles</a>
       </div>
@@ -274,32 +268,31 @@
     </div>
   </div>
 
-  <!-- DEMO EN DESARROLLO -->
+  <!-- DEMO -->
   <div id="demo" class="section">
     <h2>Demo en desarrollo</h2>
     <p>
-      Próximamente podrás explorar demostraciones interactivas de nuestros sistemas,
-      incluyendo visualización de estados dinámicos, control en tiempo real,
-      simuladores y dashboards inteligentes.
+      Próximamente: demostraciones interactivas de control,
+      simulación y visualización de sistemas robóticos.
     </p>
-    <a href="#contact" class="btn-primary">Contáctanos para acceso anticipado</a>
+    <a href="#contact" class="btn-primary">Acceso anticipado</a>
   </div>
 
-  <!-- CONTACTO -->
+  <!-- CONTACT -->
   <div id="contact" class="section" style="background: var(--bg-light);">
     <h2>Contacto</h2>
     <p>
-      Escríbenos para colaboraciones, proyectos o presentaciones.
-      <br>
-      <strong>martin.salazar.usr@gmail.com</strong>
+      Colaboraciones, proyectos y presentaciones.
+      <br><strong>martin.salazar.usr@gmail.com</strong>
     </p>
   </div>
 
   <!-- FOOTER -->
   <footer>
-    © 2026 DSR Labs · Advanced Robotics · Human-Centered Engineering · Todos los derechos reservados.
+    © 2026 DSR Labs · Advanced Robotics · Human-Centered Engineering
   </footer>
 
 </body>
 </html>
+
 
