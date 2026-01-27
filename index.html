@@ -1,116 +1,92 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DSR Labs</title>
-  <link rel="icon" type="image/png" href="logo-dsr.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSR Labs</title>
+<link rel="icon" type="image/png" href="logo-dsr.png">
 
-  <style>
-    :root {
-      --dsr-blue: #1f5fa9;
-      --dsr-blue-dark: #17427a;
-      --text-dark: #111;
-      --text-gray: #555;
-      --bg-light: #f9f9f9;
-      --btn-radius: 6px;
-      --transition-fast: 0.35s ease;
-    }
+<style>
+:root {
+  --dsr-blue: #1f5fa9;
+  --dsr-blue-dark: #17427a;
+  --text-dark: #111;
+  --text-gray: #555;
+  --bg-light: #f9f9f9;
+  --btn-radius: 6px;
+  --transition-fast: 0.35s ease;
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      color: var(--text-dark);
-      background: #fff;
-    }
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--text-dark);
+  background: #fff;
+}
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
-    /* ================= NAV ================= */
-    nav {
-      width: 100%;
-      padding: 18px 40px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background: #fff;
-      border-bottom: 1px solid #eee;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-    }
+/* ================= NAV ================= */
+nav {
+  width: 100%;
+  padding: 18px 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
 
-    nav img {
-      height: 64px;
-    }
+nav img {
+  height: 64px;
+}
 
-    nav .menu {
-      display: flex;
-      gap: 26px;
-      font-size: 16px;
-      font-weight: 500;
-      color: var(--text-gray);
-    }
+nav .menu {
+  display: flex;
+  gap: 26px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-gray);
+}
 
-    nav .menu a:hover {
-      color: var(--text-dark);
-    }
+nav .menu a:hover {
+  color: var(--text-dark);
+}
 
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-    }
+/* ================= HERO ================= */
+.hero {
+  min-height: 75vh;
+  margin-top: 90px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
 
-    .hamburger span {
-      width: 26px;
-      height: 3px;
-      background: var(--text-dark);
-      border-radius: 3px;
-    }
+  /* 🔹 GRADIENTE BASE */
+  background: linear-gradient(
+    to bottom,
+    #e9edf2 0%,
+    #f3f5f7 55%,
+    #ffffff 100%
+  );
+}
 
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 90px;
-      left: 0;
-      width: 100%;
-      background: #fff;
-      border-bottom: 1px solid #eee;
-      padding: 20px;
-      flex-direction: column;
-      gap: 16px;
-      z-index: 999;
-    }
-
-    .mobile-menu a {
-      font-size: 18px;
-      color: var(--text-dark);
-    }
-
-    /* ================= HERO ================= */
-    .hero {
-      height: 75vh;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 0 20px;
-      margin-top: 90px;
-    }
-
+/* VIDEO */
 .hero-video {
   position: absolute;
   top: 50%;
@@ -120,236 +96,142 @@
   transform: translate(-50%, -50%);
   object-fit: cover;
   z-index: 1;
-
-  /* recorte real del encuadre */
-  clip-path: inset(25% 0 40% 0);
-
-  /* máscara vertical (cine-style) */
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 18%,
-    black 82%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 18%,
-    black 82%,
-    transparent 100%
-  );
-
-  /* aclarado */
-  filter: brightness(1.25) contrast(1.1);
+  filter: brightness(1.15) contrast(1.05);
+  opacity: 0.9;
 }
 
+/* FADE para que se funda con el blanco */
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 120px;
+  width: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0) 0%,
+    #ffffff 100%
+  );
+  z-index: 2;
+}
 
-    }
+/* CONTENIDO */
+.hero-content {
+  position: relative;
+  z-index: 3;
+}
 
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.30);
-      z-index: 2;
-    }
+.hero h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
 
-    .hero-content {
-      position: relative;
-      z-index: 3;
-    }
+.hero p {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 30px;
+  max-width: 800px;
+}
 
-    .hero h1 {
-      font-size: 48px;
-      font-weight: 700;
-      color: #000;
-      margin-bottom: 14px;
-      animation: fadeUp 0.8s ease;
-    }
+.btn-primary {
+  background: var(--dsr-blue);
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: var(--btn-radius);
+  font-size: 17px;
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
 
-    .hero p {
-      font-size: 20px;
-      color: #111;
-      margin-bottom: 30px;
-      max-width: 800px;
-      animation: fadeUp 1s ease;
-    }
+.btn-primary:hover {
+  background: var(--dsr-blue-dark);
+  transform: translateY(-2px);
+}
 
-    .btn-primary {
-      background: var(--dsr-blue);
-      color: #fff;
-      padding: 14px 32px;
-      border-radius: var(--btn-radius);
-      font-size: 17px;
-      font-weight: 600;
-      transition: var(--transition-fast);
-    }
+/* ================= SECTIONS ================= */
+.section {
+  padding: 80px 40px;
+  background: #fff;
+}
 
-    .btn-primary:hover {
-      background: var(--dsr-blue-dark);
-      transform: translateY(-2px);
-    }
+.section h2 {
+  font-size: 32px;
+  color: var(--dsr-blue);
+  text-align: center;
+  margin-bottom: 18px;
+}
 
-    /* ================= SECTIONS ================= */
-    .section {
-      padding: 80px 40px;
-    }
+.section p {
+  font-size: 18px;
+  color: var(--text-gray);
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 28px;
+  line-height: 1.6;
+}
 
-    .section h2 {
-      font-size: 32px;
-      color: var(--dsr-blue);
-      text-align: center;
-      margin-bottom: 18px;
-    }
+/* ================= PROJECTS ================= */
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  margin-top: 40px;
+}
 
-    .section p {
-      font-size: 18px;
-      color: var(--text-gray);
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto 28px auto;
-      line-height: 1.6;
-    }
+.project-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  transition: var(--transition-fast);
+}
 
-    /* ================= PROJECTS ================= */
-    .projects-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 28px;
-      margin-top: 40px;
-    }
+.project-card:hover {
+  transform: translateY(-8px);
+}
 
-    .project-card {
-      background: #fff;
-      border: 1px solid #eee;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-      transition: var(--transition-fast);
-    }
+.project-img {
+  height: 160px;
+  background: linear-gradient(135deg, #1f5fa9, #17427a);
+}
 
-    .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.12);
-    }
+.project-content {
+  padding: 22px;
+}
 
-    .project-img {
-      height: 160px;
-      background: linear-gradient(135deg, #1f5fa9, #17427a);
-    }
+.project-card h3 {
+  font-size: 21px;
+  color: var(--dsr-blue-dark);
+  margin-bottom: 10px;
+}
 
-    .project-content {
-      padding: 22px;
-    }
+.project-card p {
+  font-size: 15px;
+  color: var(--text-gray);
+}
 
-    .project-card h3 {
-      font-size: 21px;
-      color: var(--dsr-blue-dark);
-      margin-bottom: 10px;
-    }
+/* ================= FOOTER ================= */
+footer {
+  background: var(--dsr-blue);
+  color: #fff;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 14px;
+}
 
-    .project-card p {
-      font-size: 15px;
-      color: var(--text-gray);
-      line-height: 1.5;
-    }
-
-    .btn-secondary {
-      display: inline-block;
-      margin-top: 14px;
-      background: var(--dsr-blue-dark);
-      color: #fff;
-      padding: 10px 24px;
-      border-radius: var(--btn-radius);
-      font-size: 15px;
-      font-weight: 600;
-      transition: var(--transition-fast);
-    }
-
-    .btn-secondary:hover {
-      background: var(--dsr-blue);
-    }
-
-    footer {
-      background: var(--dsr-blue);
-      color: #fff;
-      text-align: center;
-      padding: 30px 20px;
-      font-size: 14px;
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* ================= MOBILE ================= */
-    @media (max-width: 768px) {
-
-      nav {
-        padding: 14px 20px;
-      }
-
-      nav img {
-        height: 54px;
-      }
-
-      nav .menu {
-        display: none;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-
-      .hero {
-        height: auto;
-        padding: 70px 20px 60px;
-      }
-
-      .hero-video {
-       width: 100%;
-       height: 115%;
-       top: 45%;
-       left: 50%;
-       transform: translate(-50%, -45%);
-       object-fit: cover;
-
-  /* MOBILE CROP (protege la cabeza) */
-       clip-path: inset(12% 0 25% 0);
-
-  /* sin máscara */
-       mask-image: none;
-      -webkit-mask-image: none;
-      }
-
-      .hero h1 {
-        font-size: 32px;
-      }
-
-      .hero p {
-        font-size: 17px;
-      }
-
-      .section {
-        padding: 60px 20px;
-      }
-
-      .section h2 {
-        font-size: 26px;
-      }
-
-      .projects-container {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 32px;
+  }
+  .hero p {
+    font-size: 17px;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -362,103 +244,41 @@
     <a href="#demo">Demo</a>
     <a href="#contact">Contacto</a>
   </div>
-  <div class="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </div>
 </nav>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#about" onclick="toggleMenu()">Quiénes somos</a>
-  <a href="#projects" onclick="toggleMenu()">Proyectos</a>
-  <a href="#demo" onclick="toggleMenu()">Demo</a>
-  <a href="#contact" onclick="toggleMenu()">Contacto</a>
-</div>
-
-<div class="hero">
+<section class="hero">
   <video class="hero-video" autoplay muted loop playsinline>
     <source src="rover.mp4" type="video/mp4">
   </video>
-  <div class="hero-overlay"></div>
+
   <div class="hero-content">
     <h1>Engineering tomorrow’s robotics, today</h1>
     <p>Modular robotics · Advanced control · Human-centered engineering</p>
     <a href="#about" class="btn-primary">Conoce más</a>
   </div>
-</div>
+</section>
 
-<div id="about" class="section">
+<section id="about" class="section">
   <h2>Quiénes somos</h2>
-  <p>DSR Labs es un laboratorio de ingeniería avanzada enfocado en robótica, sistemas dinámicos, prótesis inteligentes e instrumentación científica.</p>
-  <p>Diseñamos tecnología real, escalable y con impacto humano.</p>
-</div>
+  <p>DSR Labs es un laboratorio de ingeniería avanzada enfocado en robótica, sistemas dinámicos e instrumentación científica.</p>
+</section>
 
-<div id="projects" class="section" style="background: var(--bg-light);">
+<section id="projects" class="section" style="background: var(--bg-light);">
   <h2>Nuestros proyectos</h2>
   <div class="projects-container">
     <div class="project-card">
       <div class="project-img"></div>
       <div class="project-content">
-        <h3>Prótesis robóticas modulares</h3>
-        <p>Desde dedos hasta extremidades completas con control mioeléctrico.</p>
-        <a href="#" class="btn-secondary">Ver detalles</a>
-      </div>
-    </div>
-    <div class="project-card">
-      <div class="project-img"></div>
-      <div class="project-content">
-        <h3>Control y dinámica avanzada</h3>
-        <p>Control predictivo, estabilidad y sistemas dinámicos complejos.</p>
-        <a href="#" class="btn-secondary">Ver detalles</a>
-      </div>
-    </div>
-    <div class="project-card">
-      <div class="project-img"></div>
-      <div class="project-content">
-        <h3>Plataformas robóticas educativas</h3>
-        <p>Plataformas escalables para formación técnica real.</p>
-        <a href="#" class="btn-secondary">Ver detalles</a>
-      </div>
-    </div>
-    <div class="project-card">
-      <div class="project-img"></div>
-      <div class="project-content">
-        <h3>Instrumentación científica</h3>
-        <p>Adquisición de datos, sensores y telemetría avanzada.</p>
-        <a href="#" class="btn-secondary">Ver detalles</a>
+        <h3>Prótesis robóticas</h3>
+        <p>Control mioeléctrico y diseño modular.</p>
       </div>
     </div>
   </div>
-</div>
-
-<div id="demo" class="section">
-  <h2>Demo en desarrollo</h2>
-  <p>Simulación, control y visualización interactiva próximamente.</p>
-  <a href="#contact" class="btn-primary">Acceso anticipado</a>
-</div>
-
-<div id="contact" class="section" style="background: var(--bg-light);">
-  <h2>Contacto</h2>
-  <p>Colaboraciones y proyectos<br><strong>martin.salazar.usr@gmail.com</strong></p>
-</div>
+</section>
 
 <footer>
-  © 2026 DSR Labs · Advanced Robotics · Human-Centered Engineering
+  © 2026 DSR Labs · Advanced Robotics
 </footer>
-
-<script>
-  function toggleMenu() {
-    const menu = document.getElementById("mobileMenu");
-    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-  }
-</script>
-<script>
-  // Fuerza inicio en mobile al cargar
-  window.addEventListener("load", () => {
-    if (window.innerWidth <= 768) {
-      window.scrollTo(0, 0);
-    }
-  });
-</script>
 
 </body>
 </html>
