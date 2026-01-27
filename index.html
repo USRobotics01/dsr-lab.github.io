@@ -314,10 +314,19 @@
       }
 
       .hero-video {
-        width: 100%;
-        height: 100%;
-        mask-image: none;
-        -webkit-mask-image: none;
+       width: 100%;
+       height: 115%;
+       top: 45%;
+       left: 50%;
+       transform: translate(-50%, -45%);
+       object-fit: cover;
+
+  /* MOBILE CROP (protege la cabeza) */
+       clip-path: inset(12% 0 25% 0);
+
+  /* sin máscara */
+       mask-image: none;
+      -webkit-mask-image: none;
       }
 
       .hero h1 {
