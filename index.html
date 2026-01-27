@@ -4,17 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DSR Labs</title>
-<link rel="icon" type="image/png" href="logo-dsr.png">
 
 <style>
 :root {
   --dsr-blue: #1f5fa9;
   --dsr-blue-dark: #17427a;
-  --text-dark: #111;
-  --text-gray: #555;
-  --bg-light: #f9f9f9;
-  --btn-radius: 6px;
-  --transition-fast: 0.35s ease;
 }
 
 /* RESET */
@@ -26,100 +20,71 @@
 
 body {
   font-family: "Segoe UI", Arial, sans-serif;
-  color: var(--text-dark);
   background: #fff;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
+  color: #111;
 }
 
 /* ================= NAV ================= */
 nav {
-  width: 100%;
-  padding: 18px 40px;
   position: fixed;
   top: 0;
-  left: 0;
+  width: 100%;
+  height: 90px;
+  padding: 0 40px;
   background: #fff;
-  border-bottom: 1px solid #eee;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   z-index: 1000;
-}
-
-nav img {
-  height: 64px;
-}
-
-nav .menu {
-  display: flex;
-  gap: 26px;
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--text-gray);
-}
-
-nav .menu a:hover {
-  color: var(--text-dark);
+  border-bottom: 1px solid #eee;
 }
 
 /* ================= HERO ================= */
 .hero {
-  min-height: 75vh;
-  margin-top: 90px;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0 20px;
+  margin-top: 90px;
+  height: 75vh;
+  overflow: hidden;
 
-  /* 🔹 GRADIENTE BASE */
+  /* 🔹 FONDO QUE RELLENA TODO */
   background: linear-gradient(
     to bottom,
-    #e9edf2 0%,
-    #f3f5f7 55%,
+    #eef1f4 0%,
+    #f5f7f9 55%,
     #ffffff 100%
   );
 }
 
-/* VIDEO */
+/* VIDEO GIGANTE CENTRADO */
 .hero-video {
   position: absolute;
   top: 50%;
   left: 50%;
-  height: 120%;
+
+  /* 🔥 agrandamos fuerte */
   width: auto;
+  height: 160%;
+
   transform: translate(-50%, -50%);
   object-fit: cover;
+
+  /* 🔥 RECORTE REAL */
+  clip-path: inset(25% 0 40% 0);
+
   z-index: 1;
   filter: brightness(1.15) contrast(1.05);
-  opacity: 0.9;
 }
 
-/* FADE para que se funda con el blanco */
-.hero::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 120px;
-  width: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(255,255,255,0) 0%,
-    #ffffff 100%
-  );
-  z-index: 2;
-}
-
-/* CONTENIDO */
+/* CONTENIDO ABAJO */
 .hero-content {
-  position: relative;
+  position: absolute;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
   z-index: 3;
+  width: 100%;
+  padding: 0 20px;
 }
 
 .hero h1 {
@@ -130,105 +95,54 @@ nav .menu a:hover {
 
 .hero p {
   font-size: 20px;
+  margin-bottom: 26px;
   color: #333;
-  margin-bottom: 30px;
-  max-width: 800px;
 }
 
 .btn-primary {
   background: var(--dsr-blue);
   color: #fff;
-  padding: 14px 32px;
-  border-radius: var(--btn-radius);
+  padding: 14px 34px;
+  border-radius: 6px;
   font-size: 17px;
   font-weight: 600;
-  transition: var(--transition-fast);
+  text-decoration: none;
 }
 
-.btn-primary:hover {
-  background: var(--dsr-blue-dark);
-  transform: translateY(-2px);
+/* FADE FINAL A BLANCO */
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0),
+    #ffffff
+  );
+  z-index: 4;
 }
 
-/* ================= SECTIONS ================= */
+/* ================= NEXT SECTION ================= */
 .section {
   padding: 80px 40px;
   background: #fff;
-}
-
-.section h2 {
-  font-size: 32px;
-  color: var(--dsr-blue);
   text-align: center;
-  margin-bottom: 18px;
 }
 
-.section p {
-  font-size: 18px;
-  color: var(--text-gray);
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto 28px;
-  line-height: 1.6;
-}
-
-/* ================= PROJECTS ================= */
-.projects-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 28px;
-  margin-top: 40px;
-}
-
-.project-card {
-  background: #fff;
-  border: 1px solid #eee;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-  transition: var(--transition-fast);
-}
-
-.project-card:hover {
-  transform: translateY(-8px);
-}
-
-.project-img {
-  height: 160px;
-  background: linear-gradient(135deg, #1f5fa9, #17427a);
-}
-
-.project-content {
-  padding: 22px;
-}
-
-.project-card h3 {
-  font-size: 21px;
-  color: var(--dsr-blue-dark);
-  margin-bottom: 10px;
-}
-
-.project-card p {
-  font-size: 15px;
-  color: var(--text-gray);
-}
-
-/* ================= FOOTER ================= */
-footer {
-  background: var(--dsr-blue);
-  color: #fff;
-  text-align: center;
-  padding: 30px 20px;
-  font-size: 14px;
-}
-
-/* ================= MOBILE ================= */
 @media (max-width: 768px) {
+  .hero {
+    height: 85vh;
+  }
+
+  .hero-video {
+    height: 190%;
+    clip-path: inset(18% 0 35% 0);
+  }
+
   .hero h1 {
     font-size: 32px;
-  }
-  .hero p {
-    font-size: 17px;
   }
 }
 </style>
@@ -237,13 +151,8 @@ footer {
 <body>
 
 <nav>
-  <img src="logo-dsr.png" alt="DSR Labs Logo">
-  <div class="menu">
-    <a href="#about">Quiénes somos</a>
-    <a href="#projects">Proyectos</a>
-    <a href="#demo">Demo</a>
-    <a href="#contact">Contacto</a>
-  </div>
+  <img src="logo-dsr.png" height="60">
+  <div>Quiénes somos · Proyectos · Demo · Contacto</div>
 </nav>
 
 <section class="hero">
@@ -260,25 +169,9 @@ footer {
 
 <section id="about" class="section">
   <h2>Quiénes somos</h2>
-  <p>DSR Labs es un laboratorio de ingeniería avanzada enfocado en robótica, sistemas dinámicos e instrumentación científica.</p>
+  <p>DSR Labs es un laboratorio de ingeniería avanzada enfocado en robótica real.</p>
 </section>
-
-<section id="projects" class="section" style="background: var(--bg-light);">
-  <h2>Nuestros proyectos</h2>
-  <div class="projects-container">
-    <div class="project-card">
-      <div class="project-img"></div>
-      <div class="project-content">
-        <h3>Prótesis robóticas</h3>
-        <p>Control mioeléctrico y diseño modular.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  © 2026 DSR Labs · Advanced Robotics
-</footer>
 
 </body>
 </html>
+
