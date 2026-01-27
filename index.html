@@ -1,177 +1,687 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DSR Labs</title>
-
-<style>
-:root {
-  --dsr-blue: #1f5fa9;
-  --dsr-blue-dark: #17427a;
-}
-
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: #fff;
-  color: #111;
-}
-
-/* ================= NAV ================= */
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 90px;
-  padding: 0 40px;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 1000;
-  border-bottom: 1px solid #eee;
-}
-
-/* ================= HERO ================= */
-.hero {
-  position: relative;
-  margin-top: 90px;
-  height: 75vh;
-  overflow: hidden;
-
-  /* 🔹 FONDO QUE RELLENA TODO */
-  background: linear-gradient(
-    to bottom,
-    #eef1f4 0%,
-    #f5f7f9 55%,
-    #ffffff 100%
-  );
-}
-
-/* VIDEO GIGANTE CENTRADO */
-.hero-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-
-  /* 🔥 agrandamos fuerte */
-  width: auto;
-  height: 160%;
-
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-
-  /* 🔥 RECORTE REAL */
-  clip-path: inset(25% 0 40% 0);
-
-  z-index: 1;
-  filter: brightness(1.15) contrast(1.05);
-}
-
-/* CONTENIDO ABAJO */
-.hero-content {
-  position: absolute;
-  bottom: 90px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  z-index: 3;
-  width: 100%;
-  padding: 0 20px;
-}
-
-.hero h1 {
-  font-size: 48px;
-  font-weight: 700;
-  margin-bottom: 14px;
-}
-
-.hero p {
-  font-size: 20px;
-  margin-bottom: 26px;
-  color: #333;
-}
-
-.btn-primary {
-  background: var(--dsr-blue);
-  color: #fff;
-  padding: 14px 34px;
-  border-radius: 6px;
-  font-size: 17px;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-/* FADE FINAL A BLANCO */
-.hero::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 120px;
-  background: linear-gradient(
-    to bottom,
-    rgba(255,255,255,0),
-    #ffffff
-  );
-  z-index: 4;
-}
-
-/* ================= NEXT SECTION ================= */
-.section {
-  padding: 80px 40px;
-  background: #fff;
-  text-align: center;
-}
-
-@media (max-width: 768px) {
-  .hero {
-    height: 85vh;
-  }
-
-  .hero-video {
-    height: 190%;
-    clip-path: inset(18% 0 35% 0);
-  }
-
-  .hero h1 {
-    font-size: 32px;
-  }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSR Labs | Advanced Robotics Engineering</title>
+    <link rel="icon" type="image/png" href="logo-dsr.png">
+    <style>
+        :root {
+            --dsr-blue: #1f5fa9;
+            --dsr-blue-dark: #17427a;
+            --dsr-blue-light: #4a8fe2;
+            --text-dark: #111;
+            --text-gray: #555;
+            --bg-light: #f9f9f9;
+            --btn-radius: 6px;
+            --transition-fast: 0.35s ease;
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 15px 35px rgba(0,0,0,0.12);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-dark);
+            background: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* ================= NAV ================= */
+        nav {
+            width: 100%;
+            padding: 18px 40px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(238, 238, 238, 0.8);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition-fast);
+        }
+        
+        nav.scrolled {
+            padding: 12px 40px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        nav img {
+            height: 64px;
+            transition: var(--transition-fast);
+        }
+        
+        nav.scrolled img {
+            height: 54px;
+        }
+        
+        nav .menu {
+            display: flex;
+            gap: 26px;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-gray);
+        }
+        
+        nav .menu a {
+            position: relative;
+            padding: 8px 0;
+        }
+        
+        nav .menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--dsr-blue);
+            transition: width var(--transition-fast);
+        }
+        
+        nav .menu a:hover::after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        .hamburger span {
+            width: 26px;
+            height: 3px;
+            background: var(--text-dark);
+            border-radius: 3px;
+            transition: var(--transition-fast);
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 90px;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(238, 238, 238, 0.8);
+            padding: 20px;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 999;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .mobile-menu a {
+            font-size: 18px;
+            color: var(--text-dark);
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            transition: var(--transition-fast);
+        }
+        
+        .mobile-menu a:hover {
+            color: var(--dsr-blue);
+            padding-left: 10px;
+        }
+        
+        /* ================= HERO ================= */
+        .hero {
+            height: 100vh;
+            min-height: 800px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: 0;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 20%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.3) 80%, rgba(0,0,0,0.7) 100%);
+            z-index: 3;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 1;
+            clip-path: inset(15% 0 25% 0);
+            filter: brightness(1.2) contrast(1.1);
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.6) 100%);
+            z-index: 2;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 4;
+            max-width: 1000px;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 20px;
+            animation: fadeUp 0.8s ease;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            line-height: 1.1;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            max-width: 800px;
+            animation: fadeUp 1s ease;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--dsr-blue) 0%, var(--dsr-blue-dark) 100%);
+            color: #fff;
+            padding: 16px 40px;
+            border-radius: var(--btn-radius);
+            font-size: 18px;
+            font-weight: 600;
+            transition: all var(--transition-fast);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(31, 95, 169, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(31, 95, 169, 0.4);
+            background: linear-gradient(135deg, var(--dsr-blue-light) 0%, var(--dsr-blue) 100%);
+        }
+        
+        /* ================= SECTIONS ================= */
+        .section {
+            padding: 100px 40px;
+        }
+        
+        .section h2 {
+            font-size: 2.5rem;
+            color: var(--dsr-blue);
+            text-align: center;
+            margin-bottom: 24px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--dsr-blue), transparent);
+        }
+        
+        .section p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+            line-height: 1.8;
+        }
+        
+        /* ================= PROJECTS ================= */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 60px;
+        }
+        
+        .project-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-fast);
+            position: relative;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--dsr-blue), var(--dsr-blue-light));
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .project-img {
+            height: 200px;
+            background: linear-gradient(135deg, #1f5fa9, #17427a);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+        }
+        
+        .project-content {
+            padding: 28px;
+        }
+        
+        .project-card h3 {
+            font-size: 1.5rem;
+            color: var(--dsr-blue-dark);
+            margin-bottom: 12px;
+        }
+        
+        .project-card p {
+            font-size: 1rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        
+        .btn-secondary {
+            display: inline-block;
+            background: transparent;
+            color: var(--dsr-blue);
+            padding: 10px 24px;
+            border-radius: var(--btn-radius);
+            font-size: 15px;
+            font-weight: 600;
+            transition: all var(--transition-fast);
+            border: 2px solid var(--dsr-blue);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--dsr-blue);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        
+        /* ================= DEMO SECTION ================= */
+        .demo-section {
+            background: linear-gradient(135deg, #f5f9ff 0%, #e8f1ff 100%);
+        }
+        
+        /* ================= CONTACT ================= */
+        .contact-email {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--dsr-blue), var(--dsr-blue-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-top: 10px;
+        }
+        
+        /* ================= FOOTER ================= */
+        footer {
+            background: linear-gradient(135deg, var(--dsr-blue-dark) 0%, var(--dsr-blue) 100%);
+            color: #fff;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 15px;
+        }
+        
+        footer p {
+            opacity: 0.9;
+        }
+        
+        /* ================= ANIMATIONS ================= */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* ================= MOBILE ================= */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section {
+                padding: 80px 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+            
+            nav.scrolled {
+                padding: 10px 20px;
+            }
+            
+            nav img {
+                height: 54px;
+            }
+            
+            nav .menu {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hero {
+                height: 90vh;
+                min-height: 600px;
+                padding: 70px 20px 60px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .hero-video {
+                clip-path: inset(10% 0 20% 0);
+            }
+            
+            .section {
+                padding: 70px 20px;
+            }
+            
+            .section h2 {
+                font-size: 2rem;
+            }
+            
+            .projects-container {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+            
+            .project-img {
+                height: 180px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn-primary {
+                padding: 14px 30px;
+                font-size: 16px;
+            }
+            
+            .section {
+                padding: 60px 15px;
+            }
+            
+            .project-content {
+                padding: 22px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-
-<nav>
-  <img src="logo-dsr.png" height="60">
-  <div>Quiénes somos · Proyectos · Demo · Contacto</div>
-</nav>
-
-<section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline>
-    <source src="rover.mp4" type="video/mp4">
-  </video>
-
-  <div class="hero-content">
-    <h1>Engineering tomorrow’s robotics, today</h1>
-    <p>Modular robotics · Advanced control · Human-centered engineering</p>
-    <a href="#about" class="btn-primary">Conoce más</a>
-  </div>
-</section>
-
-<section id="about" class="section">
-  <h2>Quiénes somos</h2>
-  <p>DSR Labs es un laboratorio de ingeniería avanzada enfocado en robótica real.</p>
-</section>
-
+    <nav id="navbar">
+        <img src="logo-dsr.png" alt="DSR Labs Logo">
+        <div class="menu">
+            <a href="#about">Quiénes somos</a>
+            <a href="#projects">Proyectos</a>
+            <a href="#demo">Demo</a>
+            <a href="#contact">Contacto</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+    
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#about" onclick="toggleMenu()">Quiénes somos</a>
+        <a href="#projects" onclick="toggleMenu()">Proyectos</a>
+        <a href="#demo" onclick="toggleMenu()">Demo</a>
+        <a href="#contact" onclick="toggleMenu()">Contacto</a>
+    </div>
+    
+    <div class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="rover.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Engineering tomorrow's robotics, today</h1>
+            <p>Modular robotics · Advanced control · Human-centered engineering</p>
+            <a href="#about" class="btn-primary">Conoce más</a>
+        </div>
+    </div>
+    
+    <div id="about" class="section">
+        <h2>Quiénes somos</h2>
+        <p>DSR Labs es un laboratorio de ingeniería avanzada enfocado en robótica, sistemas dinámicos, prótesis inteligentes e instrumentación científica.</p>
+        <p>Diseñamos tecnología real, escalable y con impacto humano. Combinamos innovación técnica con aplicaciones prácticas que mejoran la vida de las personas.</p>
+    </div>
+    
+    <div id="projects" class="section" style="background: var(--bg-light);">
+        <h2>Nuestros proyectos</h2>
+        <p>Explora nuestros desarrollos en robótica avanzada y sistemas de ingeniería.</p>
+        <div class="projects-container">
+            <div class="project-card">
+                <div class="project-img"></div>
+                <div class="project-content">
+                    <h3>Prótesis robóticas modulares</h3>
+                    <p>Desde dedos hasta extremidades completas con control mioeléctrico avanzado y retroalimentación háptica.</p>
+                    <a href="#" class="btn-secondary">Ver detalles</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img"></div>
+                <div class="project-content">
+                    <h3>Control y dinámica avanzada</h3>
+                    <p>Control predictivo, estabilidad y sistemas dinámicos complejos para aplicaciones industriales y de investigación.</p>
+                    <a href="#" class="btn-secondary">Ver detalles</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img"></div>
+                <div class="project-content">
+                    <h3>Plataformas robóticas educativas</h3>
+                    <p>Plataformas escalables para formación técnica real en robótica e ingeniería de sistemas.</p>
+                    <a href="#" class="btn-secondary">Ver detalles</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img"></div>
+                <div class="project-content">
+                    <h3>Instrumentación científica</h3>
+                    <p>Adquisición de datos, sensores y telemetría avanzada para aplicaciones de investigación y desarrollo.</p>
+                    <a href="#" class="btn-secondary">Ver detalles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="demo" class="section demo-section">
+        <h2>Demo en desarrollo</h2>
+        <p>Simulación, control y visualización interactiva de sistemas robóticos. Próximamente disponible.</p>
+        <a href="#contact" class="btn-primary">Solicitar acceso anticipado</a>
+    </div>
+    
+    <div id="contact" class="section">
+        <h2>Contacto</h2>
+        <p>Colaboraciones, proyectos e investigaciones conjuntas<br>
+           <span class="contact-email">martin.salazar.usr@gmail.com</span></p>
+        <p style="margin-top: 30px; font-size: 0.95rem; color: #777;">Respondemos en menos de 48 horas.</p>
+    </div>
+    
+    <footer>
+        <p>© 2026 DSR Labs · Advanced Robotics · Human-Centered Engineering</p>
+    </footer>
+    
+    <script>
+        // Toggle mobile menu
+        function toggleMenu() {
+            const menu = document.getElementById("mobileMenu");
+            const hamburger = document.querySelector('.hamburger');
+            
+            if (menu.style.display === "flex") {
+                menu.style.display = "none";
+                hamburger.classList.remove('active');
+            } else {
+                menu.style.display = "flex";
+                hamburger.classList.add('active');
+            }
+        }
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (event) => {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const hamburger = document.querySelector('.hamburger');
+            
+            if (mobileMenu.style.display === "flex" && 
+                !mobileMenu.contains(event.target) && 
+                !hamburger.contains(event.target)) {
+                mobileMenu.style.display = "none";
+                hamburger.classList.remove('active');
+            }
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobileMenu');
+                    const hamburger = document.querySelector('.hamburger');
+                    if (mobileMenu.style.display === "flex") {
+                        mobileMenu.style.display = "none";
+                        hamburger.classList.remove('active');
+                    }
+                }
+            });
+        });
+        
+        // Force scroll to top on mobile load
+        window.addEventListener("load", () => {
+            if (window.innerWidth <= 768) {
+                window.scrollTo(0, 0);
+            }
+        });
+        
+        // Video fallback image (in case video doesn't load)
+        const heroVideo = document.querySelector('.hero-video');
+        heroVideo.addEventListener('error', () => {
+            heroVideo.style.display = 'none';
+            document.querySelector('.hero').style.background = 'linear-gradient(135deg, #1f5fa9, #17427a)';
+        });
+    </script>
 </body>
 </html>
-
