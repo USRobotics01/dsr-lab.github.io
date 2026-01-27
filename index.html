@@ -121,14 +121,26 @@
   object-fit: cover;
   z-index: 1;
 
-  /* recorte real del video */
-  clip-path: inset(10% 0 40% 0);
+  /* recorte real del encuadre */
+  clip-path: inset(40% 0 40% 0);
 
-  /* máscara estética */
-  mask-image: radial-gradient(circle at center, black 52%, transparent 88%);
-  -webkit-mask-image: radial-gradient(circle at center, black 52%, transparent 88%);
+  /* máscara vertical (cine-style) */
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 18%,
+    black 82%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 18%,
+    black 82%,
+    transparent 100%
+  );
 
-  /* aclarar */
+  /* aclarado */
   filter: brightness(1.25) contrast(1.1);
 }
 
