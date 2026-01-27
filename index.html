@@ -451,6 +451,14 @@
     menu.style.display = menu.style.display === "flex" ? "none" : "flex";
   }
 </script>
+<script>
+  // Fuerza inicio en mobile al cargar
+  window.addEventListener("load", () => {
+    if (window.innerWidth <= 768) {
+      window.scrollTo(0, 0);
+    }
+  });
+</script>
 
 </body>
 </html>
